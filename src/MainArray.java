@@ -60,10 +60,10 @@ public class MainArray {
         Resume[] all = ARRAY_STORAGE.getAll();
         System.out.println("----------------------------");
         if (all.length == 0) {
-            System.out.println("Empty");
+            System.out.print("Empty");
         } else {
             for (Resume r : all) {
-                System.out.println(r);
+                System.out.print(r+", ");
             }
         }
         System.out.println("----------------------------");

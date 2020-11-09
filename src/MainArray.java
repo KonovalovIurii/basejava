@@ -63,7 +63,7 @@ public class MainArray {
             System.out.print("Empty");
         } else {
             for (Resume r : all) {
-                System.out.print(r+", ");
+                System.out.print(r + ", ");
             }
         }
         System.out.println("----------------------------");

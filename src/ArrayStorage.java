@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Array based storage for Resumes
  */
@@ -17,25 +13,20 @@ public class ArrayStorage {
         }
         //сбросим после очистки
         size = 0;
-        return;
     }
 
     void save(Resume r) {
-        if (size < 10000) {
+        if (size < storage.length) {
             storage[size] = r;
             size++;
-            return;
         }
         System.out.println("Not enough space in the array");
-        return;
     }
 
     Resume get(String uuid) {
         for (int i = 0; i < size; i++) {
             if (storage[i].uuid.equals(uuid)) {
                 return storage[i];
-            } else {
-                break;
             }
         }
         System.out.println("Resume not found");
@@ -45,14 +36,15 @@ public class ArrayStorage {
     void delete(String uuid) {
         for (int i = 0; i < size; i++) {
             if (storage[i].uuid.equals(uuid)) {
-                if (i == size -1) {
+                if (i == size - 1) {
                     //удаляемый элемент является последним
-                    storage[size-1] = null;
-                }else {
+                    storage[size - 1] = null;
+                } else {
                     //переносим последний элемент в удаляемый и затираем последний
                     storage[i] = storage[size - 1];
-                    storage[size-1] = null;
+                    storage[size - 1] = null;
                     size--;
+                    break;
                 }
             }
         }
@@ -63,11 +55,11 @@ public class ArrayStorage {
      * @return array, contains only Resumes in storage (without null)
      */
     Resume[] getAll() {
-        Resume[] outstorage = new Resume[size];
-        for (int i=0; i < size; i++){
-           outstorage[i] =  storage[i];
+        Resume[] resumes = new Resume[size];
+        for (int i = 0; i < size; i++) {
+            resumes[i] = storage[i];
         }
-        return outstorage;
+        return resumes;
     }
 
     int size() {
